@@ -10,17 +10,12 @@ html {
 
 body {
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 30px 15px;
-
     font-family: Arial, sans-serif;
-
     color: white;
-
     background:
         radial-gradient(
             circle at 15% 20%,
@@ -33,7 +28,6 @@ body {
             transparent 35%
         ),
         #050507;
-
     overflow-y: auto;
 }
 
@@ -43,37 +37,25 @@ body {
 ================================= */
 
 .login-box {
-
     width: min(430px, 100%);
-
     padding: 40px;
-
     border-radius: 28px;
-
     background: rgba(255, 255, 255, 0.07);
-
     border: 1px solid rgba(255, 255, 255, 0.16);
-
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-
     box-shadow:
         0 30px 80px rgba(0, 0, 0, 0.6),
         inset 0 1px rgba(255, 255, 255, 0.1);
-
     text-align: center;
-
     animation: cardAppear 0.6s ease;
 }
 
-
 @keyframes cardAppear {
-
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -86,30 +68,21 @@ body {
 ================================= */
 
 .logo {
-
     font-size: 34px;
-
     font-weight: 800;
-
     margin-bottom: 25px;
-
     letter-spacing: -1px;
 }
 
-
 .logo span {
-
     background:
         linear-gradient(
             90deg,
             #8d7aff,
             #00d9ff
         );
-
     -webkit-background-clip: text;
-
     background-clip: text;
-
     color: transparent;
 }
 
@@ -119,19 +92,13 @@ body {
 ================================= */
 
 h1 {
-
     font-size: 29px;
-
     margin-bottom: 8px;
 }
 
-
 .subtitle {
-
     color: #999;
-
     font-size: 14px;
-
     margin-bottom: 30px;
 }
 
@@ -141,19 +108,13 @@ h1 {
 ================================= */
 
 form {
-
     text-align: left;
 }
 
-
 form > label {
-
     display: block;
-
     font-size: 14px;
-
     color: #d0d0d0;
-
     margin-bottom: 8px;
 }
 
@@ -162,50 +123,32 @@ form > label {
    ALL INPUT BOXES
 ================================= */
 
-/* This fixes the Name field too */
-
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-
     width: 100%;
-
     height: 52px;
-
     padding: 0 16px;
-
     margin-bottom: 18px;
-
     border-radius: 14px;
-
     border: 1px solid rgba(255, 255, 255, 0.12);
-
     outline: none;
-
     background: rgba(0, 0, 0, 0.32);
-
     color: white;
-
     font-size: 14px;
-
     transition: 0.25s;
 }
-
 
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="password"]::placeholder {
-
     color: #666;
 }
-
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-
     border-color: rgba(0, 217, 255, 0.65);
-
     box-shadow:
         0 0 20px rgba(0, 217, 255, 0.1);
 }
@@ -216,33 +159,21 @@ input[type="password"]:focus {
 ================================= */
 
 .password-box {
-
     position: relative;
 }
 
-
 .password-box input {
-
     padding-right: 50px;
 }
 
-
 .eye {
-
     position: absolute;
-
     right: 14px;
-
     top: 14px;
-
     border: none;
-
     background: transparent;
-
     color: white;
-
     cursor: pointer;
-
     font-size: 16px;
 }
 
@@ -252,53 +183,34 @@ input[type="password"]:focus {
 ================================= */
 
 .options {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     font-size: 12px;
-
     margin-bottom: 22px;
 }
 
-
 .remember {
-
     display: flex;
-
     align-items: center;
-
     gap: 7px;
-
     color: #999;
 }
 
-
 .remember input {
-
     width: 18px;
-
     height: 18px;
 }
 
-
 .options a,
 .signup a {
-
     color: #8d7aff;
-
     text-decoration: none;
-
     transition: 0.2s;
 }
 
-
 .options a:hover,
 .signup a:hover {
-
     color: #00d9ff;
 }
 
@@ -308,38 +220,25 @@ input[type="password"]:focus {
 ================================= */
 
 form button {
-
     width: 100%;
-
     height: 52px;
-
     border: none;
-
     border-radius: 14px;
-
     background:
         linear-gradient(
             100deg,
             #735cff,
             #00bfe8
         );
-
     color: white;
-
     font-size: 15px;
-
     font-weight: bold;
-
     cursor: pointer;
-
     transition: 0.25s;
 }
 
-
 form button:hover {
-
     transform: translateY(-2px);
-
     box-shadow:
         0 10px 30px rgba(0, 200, 255, 0.2);
 }
@@ -350,27 +249,17 @@ form button:hover {
 ================================= */
 
 .divider {
-
     display: flex;
-
     align-items: center;
-
     gap: 12px;
-
     margin: 25px 0;
-
     color: #666;
-
     font-size: 11px;
 }
 
-
 .divider span {
-
     height: 1px;
-
     flex: 1;
-
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -380,31 +269,19 @@ form button:hover {
 ================================= */
 
 .google {
-
     width: 100%;
-
     height: 50px;
-
     border-radius: 14px;
-
     border: 1px solid rgba(255, 255, 255, 0.12);
-
     background: rgba(255, 255, 255, 0.05);
-
     color: white;
-
     cursor: pointer;
-
     font-size: 14px;
-
     transition: 0.25s;
 }
 
-
 .google:hover {
-
     background: rgba(255, 255, 255, 0.1);
-
     transform: translateY(-1px);
 }
 
@@ -414,55 +291,17 @@ form button:hover {
 ================================= */
 
 .signup {
-
     margin-top: 24px;
-
     color: #777;
-
     font-size: 13px;
 }
 
-
 .signup a {
-
     font-weight: bold;
-
     margin-left: 4px;
 }
 
 
-/* =================================
-   MOBILE
-================================= */
-
-@media (max-width: 500px) {
-
-    body {
-
-        padding: 20px 12px;
-
-        align-items: flex-start;
-    }
-
-    .login-box {
-
-        padding: 30px 22px;
-
-        border-radius: 22px;
-
-        margin-top: 20px;
-    }
-
-    h1 {
-
-        font-size: 25px;
-    }
-
-    .logo {
-
-        font-size: 30px;
-    }
-}
 /* =========================================
    NMS AI CHAT APP
 ========================================= */
@@ -470,9 +309,7 @@ form button:hover {
 .chat-app {
     width: 100%;
     height: 100vh;
-
     display: flex;
-
     background:
         radial-gradient(
             circle at 80% 20%,
@@ -480,7 +317,6 @@ form button:hover {
             transparent 30%
         ),
         #050507;
-
     color: white;
 }
 
@@ -490,84 +326,51 @@ form button:hover {
 ========================================= */
 
 .sidebar {
-
     width: 260px;
-
     height: 100vh;
-
     padding: 22px 16px;
-
     display: flex;
     flex-direction: column;
-
     background: rgba(255, 255, 255, 0.045);
-
     border-right: 1px solid rgba(255, 255, 255, 0.1);
-
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
 }
 
-
-/* Logo */
-
 .sidebar-logo {
-
     font-size: 24px;
-
     font-weight: 800;
-
     margin-bottom: 25px;
-
     padding-left: 8px;
 }
 
 .sidebar-logo span {
-
     background:
         linear-gradient(
             90deg,
             #8d7aff,
             #00d9ff
         );
-
     -webkit-background-clip: text;
-
     background-clip: text;
-
     color: transparent;
 }
 
-
-/* New chat */
-
 .new-chat {
-
     width: 100%;
-
     height: 46px;
-
     border-radius: 12px;
-
     border: 1px solid rgba(255,255,255,0.12);
-
     background: rgba(255,255,255,0.06);
-
     color: white;
-
     font-size: 14px;
-
     cursor: pointer;
-
     text-align: left;
-
     padding-left: 15px;
-
     transition: 0.2s;
 }
 
 .new-chat:hover {
-
     background: rgba(255,255,255,0.1);
 }
 
@@ -577,52 +380,33 @@ form button:hover {
 ========================================= */
 
 .chat-history {
-
     margin-top: 28px;
-
     overflow-y: auto;
 }
 
 .history-title {
-
     color: #666;
-
     font-size: 11px;
-
     text-transform: uppercase;
-
     letter-spacing: 1px;
-
     margin-bottom: 10px;
-
     padding-left: 8px;
 }
 
 .chat-item {
-
     padding: 12px 10px;
-
     border-radius: 10px;
-
     color: #aaa;
-
     font-size: 13px;
-
     cursor: pointer;
-
     transition: 0.2s;
-
     white-space: nowrap;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
 }
 
 .chat-item:hover {
-
     background: rgba(255,255,255,0.06);
-
     color: white;
 }
 
@@ -632,41 +416,26 @@ form button:hover {
 ========================================= */
 
 .sidebar-bottom {
-
     margin-top: auto;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 5px;
 }
 
 .sidebar-bottom button {
-
     width: 100%;
-
     padding: 12px;
-
     border: none;
-
     border-radius: 10px;
-
     background: transparent;
-
     color: #999;
-
     text-align: left;
-
     cursor: pointer;
-
     font-size: 13px;
 }
 
 .sidebar-bottom button:hover {
-
     background: rgba(255,255,255,0.06);
-
     color: white;
 }
 
@@ -676,51 +445,32 @@ form button:hover {
 ========================================= */
 
 .chat-main {
-
     flex: 1;
-
     height: 100vh;
-
     position: relative;
-
     display: flex;
-
     flex-direction: column;
+    min-width: 0;
 }
 
-
-/* Header */
-
 .chat-header {
-
     height: 64px;
-
     display: flex;
-
     align-items: center;
-
     padding: 0 25px;
-
     border-bottom: 1px solid rgba(255,255,255,0.08);
-
     background: rgba(255,255,255,0.025);
-
     backdrop-filter: blur(20px);
 }
 
 .chat-header strong {
-
     font-size: 15px;
 }
 
 .chat-header span {
-
     display: block;
-
     font-size: 11px;
-
     color: #00d9ff;
-
     margin-top: 3px;
 }
 
@@ -730,378 +480,82 @@ form button:hover {
 ========================================= */
 
 .welcome {
-
     flex: 1;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
-
     text-align: center;
-
     padding-bottom: 120px;
 }
 
 .ai-icon {
-
     width: 60px;
-
     height: 60px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     border-radius: 18px;
-
     background:
         linear-gradient(
             135deg,
             rgba(141,122,255,0.25),
             rgba(0,217,255,0.12)
         );
-
     border: 1px solid rgba(255,255,255,0.12);
-
     font-size: 28px;
-
     margin-bottom: 20px;
 }
 
 .welcome h1 {
-
     font-size: 30px;
-
     margin-bottom: 8px;
 }
 
 .welcome p {
-
     color: #777;
-
     font-size: 14px;
 }
 
 
 /* =========================================
-   MESSAGE AREA
+   MESSAGE AREA & CONTAINER
 ========================================= */
-
-.message-area {
-
-    position: absolute;
-
-    bottom: 20px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: min(760px, 90%);
-}
-
-
-/* Input */
-
-.message-box {
-
-    height: 58px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 6px 8px 6px 12px;
-
-    border-radius: 18px;
-
-    background: rgba(255,255,255,0.065);
-
-    border: 1px solid rgba(255,255,255,0.13);
-
-    backdrop-filter: blur(20px);
-
-    box-shadow:
-        0 15px 50px rgba(0,0,0,0.35);
-}
-
-
-/* Input field */
-
-.message-box input {
-
-    flex: 1;
-
-    height: 100%;
-
-    border: none;
-
-    outline: none;
-
-    background: transparent;
-
-    color: white;
-
-    font-size: 14px;
-}
-
-.message-box input::placeholder {
-
-    color: #666;
-}
-
-
-/* Buttons */
-
-.attach,
-.send {
-
-    width: 42px;
-
-    height: 42px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    color: white;
-
-    font-size: 20px;
-}
-
-.attach {
-
-    background: transparent;
-
-    color: #888;
-}
-
-.send {
-
-    background:
-        linear-gradient(
-            135deg,
-            #735cff,
-            #00bfe8
-        );
-
-    font-weight: bold;
-
-    transition: 0.2s;
-}
-
-.send:hover {
-
-    transform: scale(1.05);
-}
-
-
-/* Disclaimer */
-
-.message-area > p {
-
-    text-align: center;
-
-    color: #555;
-
-    font-size: 10px;
-
-    margin-top: 9px;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-    .sidebar {
-
-        width: 70px;
-
-        padding: 20px 10px;
-    }
-
-    .sidebar-logo {
-
-        font-size: 0;
-
-        text-align: center;
-    }
-
-    .sidebar-logo::after {
-
-        content: "✦";
-
-        font-size: 25px;
-
-        color: #8d7aff;
-    }
-
-    .new-chat {
-
-        font-size: 0;
-
-        text-align: center;
-
-        padding: 0;
-    }
-
-    .new-chat::after {
-
-        content: "+";
-
-        font-size: 20px;
-    }
-
-    .history-title,
-    .chat-item,
-    .sidebar-bottom button {
-
-        font-size: 0;
-
-        text-align: center;
-    }
-
-    .chat-item {
-
-        height: 40px;
-    }
-
-    .sidebar-bottom button {
-
-        padding: 12px 0;
-    }
-
-    .welcome h1 {
-
-        font-size: 24px;
-    }
-
-    .message-area {
-
-        width: 94%;
-    }
-}
-/* =========================================
-   CHATGPT STYLE MESSAGE LAYOUT
-========================================= */
-
-.chat-main {
-    position: relative;
-    min-width: 0;
-}
-
-
-/* Message container */
 
 .messages {
-
     flex: 1;
-
     width: min(850px, calc(100% - 50px));
-
     margin: 0 auto;
-
     padding: 35px 0 140px;
-
     overflow-y: auto;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 20px;
-
     scroll-behavior: smooth;
 }
 
-
-/* User message */
+.messages p {
+    margin: 0;
+}
 
 .user-message {
-
     width: 100%;
-
     display: flex;
-
     justify-content: flex-end;
 }
 
-
-/* User bubble */
-
 .user-message .message-content {
-
     max-width: 70%;
-
     padding: 12px 17px;
-
     border-radius: 18px;
-
     background: rgba(255, 255, 255, 0.09);
-
     border: 1px solid rgba(255, 255, 255, 0.10);
-
     color: white;
-
     font-size: 15px;
-
     line-height: 1.5;
-
     word-break: break-word;
 }
 
-
-/* AI message */
-
-.ai-message {
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: flex-start;
-}
-
-
-/* AI bubble */
-
-.ai-message .message-content {
-
-    max-width: 75%;
-
-    color: #e8e8e8;
-
-    font-size: 15px;
-
-    line-height: 1.6;
-
-    padding: 10px 0;
-}
-
-
-/* Remove default spacing */
-
-.messages p {
-
-    margin: 0;
-}
-/* =========================================
-   NMS AI RESPONSES
-========================================= */
-
 .ai-message {
     width: 100%;
     display: flex;
@@ -1110,18 +564,11 @@ form button:hover {
 
 .ai-message .message-content {
     max-width: 75%;
-
-    padding: 10px 0;
-
     color: #e8e8e8;
-
     font-size: 15px;
-
     line-height: 1.6;
+    padding: 10px 0;
 }
-
-
-/* Thinking animation */
 
 #thinking .message-content {
     color: #777;
@@ -1136,21 +583,89 @@ form button:hover {
 }
 
 @keyframes typingDots {
+    0% { width: 0; }
+    50% { width: 10px; }
+    100% { width: 20px; }
+}
 
-    0% {
-        width: 0;
-    }
+.message-area {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(760px, 90%);
+}
 
-    50% {
-        width: 10px;
+.message-box {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px 6px 12px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.065);
+    border: 1px solid rgba(255,255,255,0.13);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.35);
+}
+
+.message-box input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 14px;
+}
+
+.message-box input::placeholder {
+    color: #666;
+}
+
+.attach,
+.send {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+.attach {
+    background: transparent;
+    color: #888;
+}
+
+.send {
+    background:
+        linear-gradient(
+            135deg,
+            #735cff,
+            #00bfe8
+        );
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.send:hover {
+    transform: scale(1.05);
+}
+
+.message-area > p {
+    text-align: center;
+    color: #555;
+    font-size: 10px;
+    margin-top: 9px;
+}
 
 
-
-
-        
-    /* =========================================
+/* =========================================
    NEON GLOW LOADING TRANSITION
 ========================================= */
+
 .auth-loader-overlay {
     position: fixed;
     top: 0;
@@ -1161,12 +676,11 @@ form button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 99999;
     animation: fadeIn 0.3s ease;
     overflow: hidden;
 }
 
-/* Glowing Neon Backdrop Circles */
 .neon-wrapper {
     position: relative;
     display: flex;
@@ -1185,7 +699,6 @@ form button:hover {
     animation: neonPulse 1.5s infinite alternate ease-in-out;
 }
 
-/* Central Logo Box with Neon Border Glow */
 .neon-logo-box {
     position: relative;
     z-index: 2;
@@ -1199,7 +712,6 @@ form button:hover {
     box-shadow: 0 0 25px rgba(0, 217, 255, 0.4), inset 0 0 15px rgba(141, 122, 255, 0.3);
 }
 
-/* "NMS AI" Text with Cyan & Purple Neon Glow */
 .neon-logo-text {
     font-size: 32px;
     font-weight: 800;
@@ -1220,7 +732,6 @@ form button:hover {
         0 0 30px #8d7aff;
 }
 
-/* Subtitle Loading Text */
 .auth-loader-text {
     position: relative;
     z-index: 2;
@@ -1231,7 +742,6 @@ form button:hover {
     letter-spacing: 1px;
 }
 
-/* Animations */
 @keyframes neonPulse {
     0% {
         transform: scale(0.9);
@@ -1246,4 +756,82 @@ form button:hover {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .sidebar {
+        width: 70px;
+        padding: 20px 10px;
+    }
+
+    .sidebar-logo {
+        font-size: 0;
+        text-align: center;
+    }
+
+    .sidebar-logo::after {
+        content: "✦";
+        font-size: 25px;
+        color: #8d7aff;
+    }
+
+    .new-chat {
+        font-size: 0;
+        text-align: center;
+        padding: 0;
+    }
+
+    .new-chat::after {
+        content: "+";
+        font-size: 20px;
+    }
+
+    .history-title,
+    .chat-item,
+    .sidebar-bottom button {
+        font-size: 0;
+        text-align: center;
+    }
+
+    .chat-item {
+        height: 40px;
+    }
+
+    .sidebar-bottom button {
+        padding: 12px 0;
+    }
+
+    .welcome h1 {
+        font-size: 24px;
+    }
+
+    .message-area {
+        width: 94%;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 20px 12px;
+        align-items: flex-start;
+    }
+
+    .login-box {
+        padding: 30px 22px;
+        border-radius: 22px;
+        margin-top: 20px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
 }
