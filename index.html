@@ -22,83 +22,108 @@
             Sign in to continue to NMS AI
         </p>
 
-       <!-- Replace the existing <form> in index.html with this labeled form -->
-<form id="loginForm">
-    <label>Email</label>
-    <input id="loginEmail" type="email" placeholder="Enter your email" required>
+        <form id="loginForm">
 
-    <label>Password</label>
-    <div class="password-box">
-        <input id="loginPassword" type="password" placeholder="Enter your password" required>
-    </div>
+            <label>Email</label>
 
-    <div class="options">
-        <label class="remember">
-            <input type="checkbox"> Remember me
-        </label>
-        <a href="#">Forgot password?</a>
-    </div>
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Enter your email"
+                required
+            >
 
-    <button type="submit">Sign In →</button>
-    <p id="loginError" style="display:none; color:#ff6b6b; margin-top:12px; text-align:center; font-size: 13px;"></p>
-</form>
+            <label>Password</label>
 
-<div class="divider">
-    <span></span> OR <span></span>
-</div>
-
-<button class="google">Continue with Google</button>
-
-<p class="signup">
-    Don't have an account? <a href="signup.html">Create account</a>
-</p>
-
-</div>
-
-<script>
-function showAuthLoading(message) {
-    const overlay = document.createElement("div");
-    overlay.className = "auth-loader-overlay";
-    overlay.innerHTML = `
-        <div class="neon-wrapper">
-            <div class="neon-glow-bg"></div>
-            <div class="neon-logo-box">
-                <div class="neon-logo-text">NMS <span>AI</span></div>
+            <div class="password-box">
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Enter your password"
+                    required
+                >
             </div>
-            <div class="auth-loader-text">${message}</div>
+
+            <div class="options">
+
+                <label class="remember">
+                    <input type="checkbox">
+                    Remember me
+                </label>
+
+                <a href="#">Forgot password?</a>
+
+            </div>
+
+            <button type="submit">
+                Sign In →
+            </button>
+
+            <p id="loginError" style="
+                display:none;
+                color:#ff6b6b;
+                margin-top:12px;
+                text-align:center;
+                font-size:13px;
+            "></p>
+
+        </form>
+
+        <div class="divider">
+            <span></span>
+            OR
+            <span></span>
         </div>
-    `;
-    document.body.appendChild(overlay);
-}
 
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+        <button class="google">
+            Continue with Google
+        </button>
 
-    const email = document.getElementById("loginEmail").value.trim().toLowerCase();
-    const password = document.getElementById("loginPassword").value;
-    const loginError = document.getElementById("loginError");
+        <p class="signup">
+            Don't have an account?
+            <a href="signup.html">Create account</a>
+        </p>
 
-    const accounts = JSON.parse(localStorage.getItem("nms_ai_accounts")) || [];
-    const user = accounts.find(acc => acc.email === email && acc.password === password);
+    </div>
 
-    if (user) {
-        localStorage.setItem("nms_ai_logged_in_user", JSON.stringify({
-            id: user.id,
-            name: user.name,
-            email: user.email
-        }));
-        
-        // Trigger smooth transition animation
-        showAuthLoading("Logging you in...");
+    <script>
+        function showAuthLoading(message) {
+            const overlay = document.createElement("div");
+            overlay.className = "auth-loader-overlay";
+            overlay.innerHTML = `
+                <div class="auth-spinner"></div>
+                <div class="auth-loader-text">${message}</div>
+            `;
+            document.body.appendChild(overlay);
+        }
 
-        setTimeout(() => {
-            window.location.href = "chat.html";
-        }, 1200);
-    } else {
-        loginError.textContent = "Invalid email or password.";
-        loginError.style.display = "block";
-    }
-});
-</script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+            const password = document.getElementById("loginPassword").value;
+            const loginError = document.getElementById("loginError");
+
+            const accounts = JSON.parse(localStorage.getItem("nms_ai_accounts")) || [];
+            const user = accounts.find(acc => acc.email === email && acc.password === password);
+
+            if (user) {
+                localStorage.setItem("nms_ai_logged_in_user", JSON.stringify({
+                    id: user.id,
+                    name: user.name,
+                    email: user.email
+                }));
+
+                showAuthLoading("Logging you in...");
+
+                setTimeout(() => {
+                    window.location.href = "chat.html";
+                }, 1200);
+            } else {
+                loginError.textContent = "Invalid email or password.";
+                loginError.style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>
