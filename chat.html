@@ -284,9 +284,12 @@
 
     .sidebar-footer {
       color: #596276;
-      font-size: 10px;
+      font-size: 11px;
       padding: 12px 8px 2px;
       border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     /* ---------- MAIN ---------- */
@@ -557,10 +560,12 @@
           <input id="historySearch" type="search" placeholder="Search chats..." autocomplete="off">
         </div>
         <div class="history-list"></div>
-    <div class="sidebar-footer" style="display: flex; justify-content: space-between; align-items: center;">
-  <span id="userNameDisplay" style="color: #9da6b9; font-weight: bold;">User</span>
-  <button id="logoutBtn" type="button" style="background: transparent; border: 1px solid var(--line); color: var(--danger); border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 11px;">Logout</button>
-</div>
+      </div>
+
+      <div class="sidebar-footer">
+        <span id="userNameDisplay" style="color: #9da6b9; font-weight: bold;">User</span>
+        <button id="logoutBtn" type="button" style="background: transparent; border: 1px solid var(--line); color: var(--danger); border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 11px;">Logout</button>
+      </div>
     </aside>
 
     <main class="main">
@@ -590,8 +595,8 @@
     </main>
   </div>
 
- <script>
-    // 1. ROUTE GUARD: Check if user is logged in
+  <script>
+    // 1. ROUTE GUARD: Check authentication status
     const loggedInUserRaw = localStorage.getItem("nms_ai_logged_in_user");
     if (!loggedInUserRaw) {
       window.location.href = "index.html";
@@ -605,21 +610,19 @@
     const welcome = document.querySelector(".welcome");
     const newChatButton = document.querySelector(".new-chat");
 
-    // 3. USER ISOLATED CHAT STORAGE KEY
+    // 3. ISOLATED USER STORAGE
     const HISTORY_KEY = `nms_ai_chats_${currentUser.id}`;
     let currentChatId = null;
     let chats = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
 
-    // 4. ATTACH LOGOUT EVENT & DISPLAY USERNAME
+    // 4. LOGOUT & USER DISPLAY BINDING
     window.addEventListener("DOMContentLoaded", () => {
-      // Show logged in name in sidebar
-      const sidebarFooter = document.querySelector(".sidebar-footer");
-      if (sidebarFooter && currentUser.name) {
-        sidebarFooter.querySelector("span").textContent = currentUser.name;
+      const nameDisplay = document.getElementById("userNameDisplay");
+      if (nameDisplay && currentUser.name) {
+        nameDisplay.textContent = currentUser.name;
       }
 
-      // Attach working Logout event listener
-      const logoutBtn = document.querySelector(".sidebar-footer button") || document.getElementById("logoutBtn");
+      const logoutBtn = document.getElementById("logoutBtn");
       if (logoutBtn) {
         logoutBtn.addEventListener("click", () => {
           localStorage.removeItem("nms_ai_logged_in_user");
@@ -628,7 +631,6 @@
       }
     });
 
-    // ... KEEP THE REST OF YOUR FUNCTIONS BELOW (saveChats, renderHistory, etc.) ...
     function saveChats() {
       localStorage.setItem(HISTORY_KEY, JSON.stringify(chats));
     }
