@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NMS AI — Create Account</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="logo">
+            NMS <span>AI</span>
+        </div>
+
+        <h1>Create account</h1>
+
+        <p class="subtitle">
+            Join NMS AI and start chatting
+        </p>
+
+        <form id="signupForm">
+
+            <label>Name</label>
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Email</label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Create a password"
+                required
+            >
+
+            <label>Confirm Password</label>
+
+            <input
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm your password"
+                required
+            >
+
+            <button type="submit">
+                Create Account →
+            </button>
+
+            <p id="errorMessage" style="
+                display:none;
+                color:#ff6b6b;
+                margin-top:12px;
+                text-align:center;
+            "></p>
+
+        </form>
+
+        <p class="signup">
+
+            Already have an account?
+
+            <a href="index.html">
+                Sign in
+            </a>
+
+        </p>
+
+    </div>
+
+
+    <script>
+
+        const signupForm = document.getElementById("signupForm");
+
+        signupForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim().toLowerCase();
+            const password = document.getElementById("password").value;
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            const errorMessage =
+                document.getElementById("errorMessage");
+
+
+            // Check password
+            if (password !== confirmPassword) {
+
+                errorMessage.textContent =
+                    "Passwords do not match.";
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            // Get existing accounts
+            let accounts =
+                JSON.parse(localStorage.getItem("nms_ai_accounts")) || [];
+
+
+            // Check if email already exists
+            const existingAccount =
+                accounts.find(account => account.email === email);
+
+
+            if (existingAccount) {
+
+                errorMessage.textContent =
+                    "An account with this email already exists.";
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            // Create account
+            const newAccount = {
+
+                id: "user_" + Date.now(),
+
+                name: name,
+
+                email: email,
+
+                password: password
+
+            };
+
+
+            // Save account
+            accounts.push(newAccount);
+
+            localStorage.setItem(
+                "nms_ai_accounts",
+                JSON.stringify(accounts)
+            );
+
+
+            // Save currently logged-in user
+            localStorage.setItem(
+                "nms_ai_logged_in_user",
+                JSON.stringify({
+                    id: newAccount.id,
+                    name: newAccount.name,
+                    email: newAccount.email
+                })
+            );
+
+
+            // Open NMS AI
+            window.location.href = "chat.html";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
