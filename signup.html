@@ -99,8 +99,13 @@ function showAuthLoading(message) {
     const overlay = document.createElement("div");
     overlay.className = "auth-loader-overlay";
     overlay.innerHTML = `
-        <div class="auth-spinner"></div>
-        <div class="auth-loader-text">${message}</div>
+        <div class="neon-wrapper">
+            <div class="neon-glow-bg"></div>
+            <div class="neon-logo-box">
+                <div class="neon-logo-text">NMS <span>AI</span></div>
+            </div>
+            <div class="auth-loader-text">${message}</div>
+        </div>
     `;
     document.body.appendChild(overlay);
 }
