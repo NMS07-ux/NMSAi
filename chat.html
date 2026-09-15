@@ -1,13 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NMS AI — Chat</title>
 
   <!-- Markdown + LaTeX -->
+
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
@@ -285,12 +287,9 @@
 
     .sidebar-footer {
       color: #596276;
-      font-size: 11px;
+      font-size: 10px;
       padding: 12px 8px 2px;
       border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
     /* ---------- MAIN ---------- */
@@ -423,6 +422,7 @@
 
     .message-content p:first-child { margin-top: 0; }
     .message-content p:last-child { margin-bottom: 0; }
+
     .message-content pre {
       overflow-x: auto;
       padding: 12px;
@@ -430,14 +430,17 @@
       background: #090d17;
       border: 1px solid var(--line);
     }
+
     .message-content code {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     }
+
     .message-content :not(pre) > code {
       padding: 2px 5px;
       border-radius: 5px;
       background: rgba(255,255,255,.07);
     }
+
     .message-content a { color: #75ddff; }
 
     /* ---------- COMPOSER ---------- */
@@ -524,450 +527,1123 @@
         width: 220px;
         min-width: 220px;
       }
+
       .message-content { max-width: 88%; }
-      #messages { padding-left: 14px; padding-right: 14px; }
-      .composer-wrap { padding-left: 12px; padding-right: 12px; }
+
+      #messages {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .composer-wrap {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
     }
 
     @media (max-width: 560px) {
-      .sidebar { width: 185px; min-width: 185px; padding: 12px 9px; }
+      .sidebar {
+        width: 185px;
+        min-width: 185px;
+        padding: 12px 9px;
+      }
+
       .brand-text { display: none; }
+
       .topbar { padding: 0 13px; }
+
       .model-pill { display: none; }
     }
   </style>
+
 </head>
 
 <body>
+
   <div class="app">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-logo">N</div>
-        <div class="brand-text">
-          <strong>NMS AI</strong>
-          <span>Intelligent workspace</span>
-        </div>
-      </div>
 
-      <button class="new-chat" type="button">＋&nbsp; New chat</button>
+```
+<aside class="sidebar">
 
-      <!-- JavaScript automatically fills this section with saved chats -->
-      <div class="chat-history">
-        <div class="history-head">
-          <div class="history-title">CHAT HISTORY</div>
-          <button class="history-search-toggle" type="button" title="Search chats">⌕</button>
-        </div>
-        <div class="history-search-wrap">
-          <input id="historySearch" type="search" placeholder="Search chats..." autocomplete="off">
-        </div>
-        <div class="history-list"></div>
-      </div>
+  <div class="brand">
+    <div class="brand-logo">N</div>
 
-      <div class="sidebar-footer">
-        <span id="userNameDisplay" style="color: #9da6b9; font-weight: bold;">User</span>
-        <button id="logoutBtn" type="button" style="background: transparent; border: 1px solid var(--line); color: var(--danger); border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 11px;">Logout</button>
-      </div>
-    </aside>
+    <div class="brand-text">
+      <strong>NMS AI</strong>
+      <span>Intelligent workspace</span>
+    </div>
+  </div>
 
-    <main class="main">
-      <header class="topbar">
-        <div class="status">
-          <span class="status-dot"></span>
-          <span>NMS AI is ready</span>
-        </div>
-        <div class="model-pill">NMS AI • Chat</div>
-      </header>
+  <button class="new-chat" type="button">
+    ＋&nbsp; New chat
+  </button>
 
-      <section id="messages">
-        <div class="welcome">
-          <div class="welcome-icon">N</div>
-          <h1>What can I help with?</h1>
-          <p>Ask a question, write code, solve a problem, or start building something new.</p>
-        </div>
-      </section>
+  <div class="chat-history">
 
-      <div class="composer-wrap">
-        <div class="composer">
-          <textarea id="messageInput" rows="1" placeholder="Message NMS AI..." aria-label="Message NMS AI"></textarea>
-          <button class="send" type="button" aria-label="Send message">➤</button>
-        </div>
-        <div class="hint">Enter to send • Shift + Enter for a new line</div>
-      </div>
-    </main>
+    <div class="history-head">
+      <div class="history-title">CHAT HISTORY</div>
+
+      <button
+        class="history-search-toggle"
+        type="button"
+        title="Search chats">
+        ⌕
+      </button>
+    </div>
+
+    <div class="history-search-wrap">
+      <input
+        id="historySearch"
+        type="search"
+        placeholder="Search chats..."
+        autocomplete="off">
+    </div>
+
+    <div class="history-list"></div>
+
+  </div>
+
+  <div
+    class="sidebar-footer"
+    style="display: flex; justify-content: space-between; align-items: center;">
+
+    <span
+      id="userNameDisplay"
+      style="color: #9da6b9; font-weight: bold;">
+      User
+    </span>
+
+    <button
+      id="logoutBtn"
+      type="button"
+      style="background: transparent; border: 1px solid var(--line); color: var(--danger); border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 11px;">
+      Logout
+    </button>
+
+  </div>
+
+</aside>
+
+<main class="main">
+
+  <header class="topbar">
+
+    <div class="status">
+      <span class="status-dot"></span>
+      <span>NMS AI is ready</span>
+    </div>
+
+    <div class="model-pill">
+      NMS AI • Chat
+    </div>
+
+  </header>
+
+  <section id="messages">
+
+    <div class="welcome">
+
+      <div class="welcome-icon">N</div>
+
+      <h1>What can I help with?</h1>
+
+      <p>
+        Ask a question, write code, solve a problem,
+        or start building something new.
+      </p>
+
+    </div>
+
+  </section>
+
+  <div class="composer-wrap">
+
+    <div class="composer">
+
+      <textarea
+        id="messageInput"
+        rows="1"
+        placeholder="Message NMS AI..."
+        aria-label="Message NMS AI"></textarea>
+
+      <button
+        class="send"
+        type="button"
+        aria-label="Send message">
+        ➤
+      </button>
+
+    </div>
+
+    <div class="hint">
+      Enter to send • Shift + Enter for a new line
+    </div>
+
+  </div>
+
+</main>
+```
+
   </div>
 
   <script>
-    // 1. ROUTE GUARD: Check authentication status
-    const loggedInUserRaw = localStorage.getItem("nms_ai_logged_in_user");
+
+    // ============================================================
+    // 1. LOGIN / ROUTE GUARD
+    // ============================================================
+
+    const loggedInUserRaw =
+      localStorage.getItem("nms_ai_logged_in_user");
+
     if (!loggedInUserRaw) {
       window.location.href = "index.html";
     }
+
     const currentUser = JSON.parse(loggedInUserRaw);
 
+
+    // ============================================================
     // 2. DOM ELEMENTS
-    const input = document.getElementById("messageInput");
-    const sendButton = document.querySelector(".send");
-    const messages = document.getElementById("messages");
-    const welcome = document.querySelector(".welcome");
-    const newChatButton = document.querySelector(".new-chat");
+    // ============================================================
 
-    // 3. ISOLATED USER STORAGE
-    const HISTORY_KEY = `nms_ai_chats_${currentUser.id}`;
+    const input =
+      document.getElementById("messageInput");
+
+    const sendButton =
+      document.querySelector(".send");
+
+    const messages =
+      document.getElementById("messages");
+
+    const welcome =
+      document.querySelector(".welcome");
+
+    const newChatButton =
+      document.querySelector(".new-chat");
+
+
+    // ============================================================
+    // 3. USER-SPECIFIC CHAT STORAGE
+    // ============================================================
+
+    const HISTORY_KEY =
+      `nms_ai_chats_${currentUser.id}`;
+
     let currentChatId = null;
-    let chats = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
 
-    // 4. LOGOUT & USER DISPLAY BINDING
+    let chats =
+      JSON.parse(
+        localStorage.getItem(HISTORY_KEY) || "[]"
+      );
+
+
+    // ============================================================
+    // 4. USER + LOGOUT
+    // ============================================================
+
     window.addEventListener("DOMContentLoaded", () => {
-      const nameDisplay = document.getElementById("userNameDisplay");
-      if (nameDisplay && currentUser.name) {
-        nameDisplay.textContent = currentUser.name;
+
+      const userNameDisplay =
+        document.getElementById("userNameDisplay");
+
+      if (userNameDisplay && currentUser.name) {
+        userNameDisplay.textContent =
+          currentUser.name;
       }
 
-      const logoutBtn = document.getElementById("logoutBtn");
+      const logoutBtn =
+        document.getElementById("logoutBtn");
+
       if (logoutBtn) {
+
         logoutBtn.addEventListener("click", () => {
-          localStorage.removeItem("nms_ai_logged_in_user");
+
+          localStorage.removeItem(
+            "nms_ai_logged_in_user"
+          );
+
           window.location.href = "index.html";
+
         });
+
       }
+
     });
 
+
+    // ============================================================
+    // 5. SAVE CHATS
+    // ============================================================
+
     function saveChats() {
-      localStorage.setItem(HISTORY_KEY, JSON.stringify(chats));
+
+      localStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(chats)
+      );
+
     }
+
 
     function getCurrentChat() {
-      return chats.find(chat => chat.id === currentChatId);
+
+      return chats.find(
+        chat => chat.id === currentChatId
+      );
+
     }
+
+
+    // ============================================================
+    // 6. CHAT TITLE
+    // ============================================================
 
     function generateChatTitle(text) {
-      let title = text.trim()
-        .replace(/[#*_`]/g, "")
-        .replace(/\s+/g, " ");
-      return title.length > 35 ? title.substring(0, 35).trim() + "..." : (title || "New Chat");
+
+      let title =
+        text.trim()
+          .replace(/[#*_`]/g, "")
+          .replace(/\s+/g, " ");
+
+      return title.length > 35
+        ? title.substring(0, 35).trim() + "..."
+        : (title || "New Chat");
+
     }
 
+
+    // ============================================================
+    // 7. CHAT DATE
+    // ============================================================
+
     function formatChatDate(timestamp) {
+
       if (!timestamp) return "";
+
       const date = new Date(timestamp);
       const now = new Date();
+
       const sameDay =
         date.getFullYear() === now.getFullYear() &&
         date.getMonth() === now.getMonth() &&
         date.getDate() === now.getDate();
 
       if (sameDay) {
-        return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+        return date.toLocaleTimeString(
+          [],
+          {
+            hour: "2-digit",
+            minute: "2-digit"
+          }
+        );
+
       }
 
-      return date.toLocaleDateString([], {
-        day: "2-digit",
-        month: "short"
-      });
-    }
-
-    function renderHistory() {
-      const historyList = document.querySelector(".history-list");
-      const query = (document.getElementById("historySearch")?.value || "").trim().toLowerCase();
-      historyList.innerHTML = "";
-
-      chats.sort((a, b) => (b.updatedAt || b.createdAt || 0) - (a.updatedAt || a.createdAt || 0));
-
-      const filtered = chats.filter(chat =>
-        !query || (chat.title || "New Chat").toLowerCase().includes(query)
+      return date.toLocaleDateString(
+        [],
+        {
+          day: "2-digit",
+          month: "short"
+        }
       );
 
+    }
+
+
+    // ============================================================
+    // 8. RENDER CHAT HISTORY
+    // ============================================================
+
+    function renderHistory() {
+
+      const historyList =
+        document.querySelector(".history-list");
+
+      const query =
+        (
+          document.getElementById("historySearch")
+            ?.value || ""
+        )
+        .trim()
+        .toLowerCase();
+
+      historyList.innerHTML = "";
+
+      chats.sort(
+        (a, b) =>
+          (b.updatedAt || b.createdAt || 0) -
+          (a.updatedAt || a.createdAt || 0)
+      );
+
+      const filtered =
+        chats.filter(chat =>
+          !query ||
+          (chat.title || "New Chat")
+            .toLowerCase()
+            .includes(query)
+        );
+
       if (!filtered.length) {
-        const empty = document.createElement("div");
+
+        const empty =
+          document.createElement("div");
+
         empty.className = "history-empty";
-        empty.textContent = query ? "No matching chats" : "No previous chats";
+
+        empty.textContent =
+          query
+            ? "No matching chats"
+            : "No previous chats";
+
         historyList.appendChild(empty);
+
         return;
       }
 
       filtered.forEach(chat => {
-        const item = document.createElement("div");
-        item.className = "history-item" + (chat.id === currentChatId ? " active" : "");
 
-        const titleWrap = document.createElement("div");
-        titleWrap.className = "history-title-wrap";
+        const item =
+          document.createElement("div");
 
-        const title = document.createElement("span");
-        title.className = "history-chat-title";
-        title.textContent = chat.title || "New Chat";
-        title.title = chat.title || "New Chat";
+        item.className =
+          "history-item" +
+          (chat.id === currentChatId
+            ? " active"
+            : "");
 
-        const date = document.createElement("span");
-        date.className = "history-date";
-        date.textContent = formatChatDate(chat.updatedAt || chat.createdAt);
+        const titleWrap =
+          document.createElement("div");
+
+        titleWrap.className =
+          "history-title-wrap";
+
+        const title =
+          document.createElement("span");
+
+        title.className =
+          "history-chat-title";
+
+        title.textContent =
+          chat.title || "New Chat";
+
+        title.title =
+          chat.title || "New Chat";
+
+        const date =
+          document.createElement("span");
+
+        date.className =
+          "history-date";
+
+        date.textContent =
+          formatChatDate(
+            chat.updatedAt ||
+            chat.createdAt
+          );
 
         titleWrap.appendChild(title);
         titleWrap.appendChild(date);
 
-        const renameButton = document.createElement("button");
-        renameButton.className = "history-rename";
+
+        const renameButton =
+          document.createElement("button");
+
+        renameButton.className =
+          "history-rename";
+
         renameButton.type = "button";
+
         renameButton.textContent = "✎";
-        renameButton.title = "Rename chat";
-        renameButton.setAttribute("aria-label", "Rename chat");
 
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "history-delete";
+        renameButton.title =
+          "Rename chat";
+
+        renameButton.setAttribute(
+          "aria-label",
+          "Rename chat"
+        );
+
+
+        const deleteButton =
+          document.createElement("button");
+
+        deleteButton.className =
+          "history-delete";
+
         deleteButton.type = "button";
+
         deleteButton.textContent = "⋮";
-        deleteButton.title = "Delete chat";
-        deleteButton.setAttribute("aria-label", "Delete chat");
 
-        item.addEventListener("click", () => loadChat(chat.id));
+        deleteButton.title =
+          "Delete chat";
 
-        renameButton.addEventListener("click", event => {
-          event.stopPropagation();
-          renameChat(chat.id);
-        });
+        deleteButton.setAttribute(
+          "aria-label",
+          "Delete chat"
+        );
 
-        deleteButton.addEventListener("click", event => {
-          event.stopPropagation();
-          deleteChat(chat.id);
-        });
+
+        item.addEventListener(
+          "click",
+          () => loadChat(chat.id)
+        );
+
+
+        renameButton.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+            renameChat(chat.id);
+
+          }
+        );
+
+
+        deleteButton.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+            deleteChat(chat.id);
+
+          }
+        );
+
 
         item.appendChild(titleWrap);
         item.appendChild(renameButton);
         item.appendChild(deleteButton);
+
         historyList.appendChild(item);
+
       });
+
     }
+
+
+    // ============================================================
+    // 9. RENAME CHAT
+    // ============================================================
 
     function renameChat(chatId) {
-      const chat = chats.find(item => item.id === chatId);
+
+      const chat =
+        chats.find(item => item.id === chatId);
+
       if (!chat) return;
 
-      const newTitle = prompt("Rename this chat:", chat.title || "New Chat");
+      const newTitle =
+        prompt(
+          "Rename this chat:",
+          chat.title || "New Chat"
+        );
+
       if (newTitle === null) return;
 
-      const title = newTitle.trim();
+      const title =
+        newTitle.trim();
+
       if (!title) return;
 
-      chat.title = title.substring(0, 60);
-      chat.updatedAt = Date.now();
+      chat.title =
+        title.substring(0, 60);
+
+      chat.updatedAt =
+        Date.now();
+
       saveChats();
       renderHistory();
+
     }
 
+
+    // ============================================================
+    // 10. CREATE NEW CHAT
+    // ============================================================
+
     function createNewChat() {
-      currentChatId = Date.now().toString();
+
+      currentChatId =
+        Date.now().toString();
 
       chats.unshift({
+
         id: currentChatId,
+
         title: "New Chat",
+
         messages: [],
+
         createdAt: Date.now(),
+
         updatedAt: Date.now()
+
       });
 
       saveChats();
+
       messages.innerHTML = `
         <div class="welcome">
           <div class="welcome-icon">N</div>
           <h1>What can I help with?</h1>
-          <p>Ask a question, write code, solve a problem, or start building something new.</p>
-        </div>`;
+          <p>
+            Ask a question, write code, solve a problem,
+            or start building something new.
+          </p>
+        </div>
+      `;
+
       input.value = "";
+
       input.focus();
+
       renderHistory();
+
     }
 
+
+    // ============================================================
+    // 11. RENDER AI MESSAGE
+    // ============================================================
+
     function renderAIMessage(content, text) {
+
       content.dataset.rawText = text;
 
       if (typeof marked !== "undefined") {
-        content.innerHTML = marked.parse(text);
+
+        content.innerHTML =
+          marked.parse(text);
+
       } else {
+
         content.textContent = text;
+
       }
 
-      if (typeof renderMathInElement !== "undefined") {
-        renderMathInElement(content, {
-          delimiters: [
-            { left: "\\[", right: "\\]", display: true },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false }
-          ]
-        });
+      if (
+        typeof renderMathInElement !== "undefined"
+      ) {
+
+        renderMathInElement(
+          content,
+          {
+            delimiters: [
+              {
+                left: "\\[",
+                right: "\\]",
+                display: true
+              },
+              {
+                left: "\\(",
+                right: "\\)",
+                display: false
+              },
+              {
+                left: "$$",
+                right: "$$",
+                display: true
+              },
+              {
+                left: "$",
+                right: "$",
+                display: false
+              }
+            ]
+          }
+        );
+
       }
+
     }
 
-    function addMessage(text, type, save = true) {
-      const message = document.createElement("div");
-      message.className = type + "-message";
 
-      const content = document.createElement("div");
-      content.className = "message-content";
-      content.dataset.rawText = text;
+    // ============================================================
+    // 12. ADD MESSAGE
+    // ============================================================
+
+    function addMessage(
+      text,
+      type,
+      save = true
+    ) {
+
+      const message =
+        document.createElement("div");
+
+      message.className =
+        type + "-message";
+
+      const content =
+        document.createElement("div");
+
+      content.className =
+        "message-content";
+
+      content.dataset.rawText =
+        text;
 
       if (type === "ai") {
-        renderAIMessage(content, text);
+
+        renderAIMessage(
+          content,
+          text
+        );
+
       } else {
-        content.textContent = text;
+
+        content.textContent =
+          text;
+
       }
 
       message.appendChild(content);
-      messages.appendChild(message);
-      messages.scrollTop = messages.scrollHeight;
 
-      if (save) saveCurrentChat();
+      messages.appendChild(message);
+
+      messages.scrollTop =
+        messages.scrollHeight;
+
+      if (save) {
+        saveCurrentChat();
+      }
+
     }
+
+
+    // ============================================================
+    // 13. SAVE CURRENT CHAT
+    // ============================================================
 
     function saveCurrentChat() {
-      const chat = getCurrentChat();
+
+      const chat =
+        getCurrentChat();
+
       if (!chat) return;
 
-      chat.updatedAt = Date.now();
+      chat.updatedAt =
+        Date.now();
+
       chat.messages = [];
 
-      messages.querySelectorAll(".user-message, .ai-message").forEach(element => {
-        const content = element.querySelector(".message-content");
-        if (!content) return;
+      messages
+        .querySelectorAll(
+          ".user-message, .ai-message"
+        )
+        .forEach(element => {
 
-        chat.messages.push({
-          type: element.classList.contains("user-message") ? "user" : "ai",
-          text: content.dataset.rawText || content.textContent
+          const content =
+            element.querySelector(
+              ".message-content"
+            );
+
+          if (!content) return;
+
+          chat.messages.push({
+
+            type:
+              element.classList.contains(
+                "user-message"
+              )
+                ? "user"
+                : "ai",
+
+            text:
+              content.dataset.rawText ||
+              content.textContent
+
+          });
+
         });
-      });
 
       saveChats();
+
       renderHistory();
+
     }
 
+
+    // ============================================================
+    // 14. LOAD CHAT
+    // ============================================================
+
     function loadChat(chatId) {
-      const chat = chats.find(item => item.id === chatId);
+
+      const chat =
+        chats.find(
+          item => item.id === chatId
+        );
+
       if (!chat) return;
 
-      currentChatId = chatId;
+      currentChatId =
+        chatId;
+
       messages.innerHTML = "";
 
-      if (!chat.messages || chat.messages.length === 0) {
+      if (
+        !chat.messages ||
+        chat.messages.length === 0
+      ) {
+
         messages.innerHTML = `
           <div class="welcome">
             <div class="welcome-icon">N</div>
             <h1>What can I help with?</h1>
-            <p>Ask a question, write code, solve a problem, or start building something new.</p>
-          </div>`;
+            <p>
+              Ask a question, write code, solve a problem,
+              or start building something new.
+            </p>
+          </div>
+        `;
+
       } else {
-        chat.messages.forEach(item => addMessage(item.text, item.type, false));
+
+        chat.messages.forEach(
+          item =>
+            addMessage(
+              item.text,
+              item.type,
+              false
+            )
+        );
+
       }
 
       input.value = "";
+
       input.focus();
+
       renderHistory();
+
     }
 
-    function deleteChat(chatId) {
-      if (!confirm("Delete this chat?")) return;
 
-      chats = chats.filter(chat => chat.id !== chatId);
+    // ============================================================
+    // 15. DELETE CHAT
+    // ============================================================
+
+    function deleteChat(chatId) {
+
+      if (!confirm("Delete this chat?"))
+        return;
+
+      chats =
+        chats.filter(
+          chat => chat.id !== chatId
+        );
+
       saveChats();
 
       if (currentChatId === chatId) {
+
         currentChatId = null;
+
         messages.innerHTML = `
           <div class="welcome">
             <div class="welcome-icon">N</div>
             <h1>What can I help with?</h1>
-            <p>Ask a question, write code, solve a problem, or start building something new.</p>
-          </div>`;
+            <p>
+              Ask a question, write code, solve a problem,
+              or start building something new.
+            </p>
+          </div>
+        `;
+
       }
 
       renderHistory();
+
     }
 
+
+    // ============================================================
+    // 16. SEND MESSAGE → BACKEND
+    // ============================================================
+
     async function sendMessage() {
-      const text = input.value.trim();
+
+      const text =
+        input.value.trim();
+
       if (!text) return;
 
-      if (!currentChatId) createNewChat();
 
-      const chat = getCurrentChat();
-      if (chat && chat.title === "New Chat") {
-        chat.title = generateChatTitle(text);
-        saveChats();
+      if (!currentChatId) {
+        createNewChat();
       }
 
-      if (welcome) welcome.style.display = "none";
-      addMessage(text, "user");
+
+      const chat =
+        getCurrentChat();
+
+      if (
+        chat &&
+        chat.title === "New Chat"
+      ) {
+
+        chat.title =
+          generateChatTitle(text);
+
+        saveChats();
+
+      }
+
+
+      if (welcome) {
+        welcome.style.display = "none";
+      }
+
+
+      // Show user's message
+      addMessage(
+        text,
+        "user"
+      );
+
       input.value = "";
 
-      const thinking = document.createElement("div");
-      thinking.className = "ai-message";
-      thinking.id = "thinking";
+
+      // Show thinking message
+      const thinking =
+        document.createElement("div");
+
+      thinking.className =
+        "ai-message";
+
+      thinking.id =
+        "thinking";
+
       thinking.innerHTML = `
         <div class="message-content">
           NMS AI is thinking<span class="dots">...</span>
-        </div>`;
+        </div>
+      `;
+
       messages.appendChild(thinking);
-      messages.scrollTop = messages.scrollHeight;
+
+      messages.scrollTop =
+        messages.scrollHeight;
+
 
       try {
-        const response = await fetch("http://127.0.0.1:5000/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text })
-        });
 
-        if (!response.ok) throw new Error("Backend returned " + response.status);
+        // ========================================================
+        // IMPORTANT:
+        // Your backend runs on PORT 3000.
+        // ========================================================
 
-        const data = await response.json();
+        const response =
+          await fetch(
+            "http://127.0.0.1:3000/chat",
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body: JSON.stringify({
+                message: text
+              })
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Backend returned " +
+            response.status
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
         thinking.remove();
-        addMessage(data.reply ?? "I didn't receive a reply from the backend.", "ai");
+
+
+        addMessage(
+          data.reply ??
+          "I didn't receive a reply from the backend.",
+          "ai"
+        );
+
+
         saveCurrentChat();
+
+
       } catch (error) {
+
         thinking.remove();
-        addMessage("⚠️ I couldn't connect to the NMS AI backend.", "ai");
-        console.error(error);
+
+        addMessage(
+          "⚠️ I couldn't connect to the NMS AI backend.",
+          "ai"
+        );
+
+        console.error(
+          "NMS AI Backend Error:",
+          error
+        );
+
       }
+
     }
 
-    sendButton.addEventListener("click", sendMessage);
 
-    input.addEventListener("keydown", event => {
-      if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault();
-        sendMessage();
+    // ============================================================
+    // 17. SEND BUTTON
+    // ============================================================
+
+    sendButton.addEventListener(
+      "click",
+      sendMessage
+    );
+
+
+    // ============================================================
+    // 18. ENTER TO SEND
+    // ============================================================
+
+    input.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Enter" &&
+          !event.shiftKey
+        ) {
+
+          event.preventDefault();
+
+          sendMessage();
+
+        }
+
       }
-    });
+    );
 
-    input.addEventListener("input", () => {
-      input.style.height = "auto";
-      input.style.height = Math.min(input.scrollHeight, 150) + "px";
-    });
 
-    newChatButton.addEventListener("click", createNewChat);
+    // ============================================================
+    // 19. AUTO-RESIZE TEXTAREA
+    // ============================================================
 
-    const historySearchToggle = document.querySelector(".history-search-toggle");
-    const historySearchWrap = document.querySelector(".history-search-wrap");
-    const historySearch = document.getElementById("historySearch");
+    input.addEventListener(
+      "input",
+      () => {
 
-    historySearchToggle.addEventListener("click", () => {
-      historySearchWrap.classList.toggle("open");
-      if (historySearchWrap.classList.contains("open")) {
-        historySearch.focus();
-      } else {
-        historySearch.value = "";
-        renderHistory();
+        input.style.height =
+          "auto";
+
+        input.style.height =
+          Math.min(
+            input.scrollHeight,
+            150
+          ) + "px";
+
       }
-    });
+    );
 
-    historySearch.addEventListener("input", renderHistory);
+
+    // ============================================================
+    // 20. NEW CHAT
+    // ============================================================
+
+    newChatButton.addEventListener(
+      "click",
+      createNewChat
+    );
+
+
+    // ============================================================
+    // 21. CHAT SEARCH
+    // ============================================================
+
+    const historySearchToggle =
+      document.querySelector(
+        ".history-search-toggle"
+      );
+
+    const historySearchWrap =
+      document.querySelector(
+        ".history-search-wrap"
+      );
+
+    const historySearch =
+      document.getElementById(
+        "historySearch"
+      );
+
+
+    historySearchToggle.addEventListener(
+      "click",
+      () => {
+
+        historySearchWrap.classList.toggle(
+          "open"
+        );
+
+        if (
+          historySearchWrap.classList.contains(
+            "open"
+          )
+        ) {
+
+          historySearch.focus();
+
+        } else {
+
+          historySearch.value = "";
+
+          renderHistory();
+
+        }
+
+      }
+    );
+
+
+    historySearch.addEventListener(
+      "input",
+      renderHistory
+    );
+
+
+    // ============================================================
+    // 22. INITIALIZE
+    // ============================================================
 
     function initializeChat() {
+
       if (chats.length) {
-        loadChat(chats[0].id);
+
+        loadChat(
+          chats[0].id
+        );
+
       } else {
+
         renderHistory();
+
       }
+
     }
 
+
     initializeChat();
+
   </script>
+
 </body>
 </html>
