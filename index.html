@@ -56,6 +56,16 @@
 </div>
 
 <script>
+function showAuthLoading(message) {
+    const overlay = document.createElement("div");
+    overlay.className = "auth-loader-overlay";
+    overlay.innerHTML = `
+        <div class="auth-spinner"></div>
+        <div class="auth-loader-text">${message}</div>
+    `;
+    document.body.appendChild(overlay);
+}
+
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -67,13 +77,18 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const user = accounts.find(acc => acc.email === email && acc.password === password);
 
     if (user) {
-        // Save logged-in session key
         localStorage.setItem("nms_ai_logged_in_user", JSON.stringify({
             id: user.id,
             name: user.name,
             email: user.email
         }));
-        window.location.href = "chat.html";
+        
+        // Trigger smooth transition animation
+        showAuthLoading("Logging you in...");
+
+        setTimeout(() => {
+            window.location.href = "chat.html";
+        }, 1200);
     } else {
         loginError.textContent = "Invalid email or password.";
         loginError.style.display = "block";
