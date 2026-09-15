@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="nms-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c5cff"/>
+      <stop offset="100%" stop-color="#00d9ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Card -->
+  <rect width="64" height="64" rx="16" fill="#070a12"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="url(#nms-grad)" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Stylized "N" Logo -->
+  <path d="M20 44V20L34 36V20H44V44L30 28V44H20Z" fill="url(#nms-grad)"/>
+</svg>
