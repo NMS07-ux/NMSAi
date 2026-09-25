@@ -1438,7 +1438,7 @@
         // Keep server.js running on your PC at PORT 3000.
         // ========================================================
 
-        const BACKEND_URL = "http://127.0.0.1:3000";
+        const BACKEND_URL = "https://YOUR-RENDER-SERVICE.onrender.com";
 
         const response = await fetch(
           `${BACKEND_URL}/chat`,
@@ -1485,7 +1485,7 @@
         thinking.remove();
 
         addMessage(
-          "⚠️ NMS AI couldn't reach the backend. Make sure server.js is running on http://127.0.0.1:3000.",
+          "⚠️ NMS AI couldn't reach the backend. Check that your Render backend is deployed and the URL above is correct.",
           "ai"
         );
 
