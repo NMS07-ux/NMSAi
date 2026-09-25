@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta charset="UTF-8">
 
     <meta
@@ -92,74 +91,48 @@
 
     </div>
 
+
     <script>
-        function showAuthLoading(message) {
-            const overlay = document.createElement("div");
-            overlay.className = "auth-loader-overlay";
-            overlay.innerHTML = `
-                <div class="auth-spinner"></div>
-                <div class="auth-loader-text">${message}</div>
-            `;
-            document.body.appendChild(overlay);
-        }
+function showAuthLoading(message) {
+    const overlay = document.createElement("div");
+    overlay.className = "auth-loader-overlay";
+    overlay.innerHTML = `
+        <div class="auth-spinner"></div>
+        <div class="auth-loader-text">${message}</div>
+    `;
+    document.body.appendChild(overlay);
+}
 
-        const signupForm = document.getElementById("signupForm");
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-        signupForm.addEventListener("submit", function(event) {
-            event.preventDefault();
+    const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword").value;
+    const loginError = document.getElementById("loginError");
 
-            const name = document.getElementById("name").value.trim();
-            const email = document.getElementById("email").value.trim().toLowerCase();
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
+    const accounts = JSON.parse(localStorage.getItem("nms_ai_accounts")) || [];
+    const user = accounts.find(acc => acc.email === email && acc.password === password);
 
-            const errorMessage = document.getElementById("errorMessage");
+    if (user) {
+        localStorage.setItem("nms_ai_logged_in_user", JSON.stringify({
+            id: user.id,
+            name: user.name,
+            email: user.email
+        }));
+        
+        // Trigger smooth transition animation
+        showAuthLoading("Logging you in...");
 
-            if (password !== confirmPassword) {
-                errorMessage.textContent = "Passwords do not match.";
-                errorMessage.style.display = "block";
-                return;
-            }
+        setTimeout(() => {
+            window.location.href = "chat.html";
+        }, 1200);
+    } else {
+        loginError.textContent = "Invalid email or password.";
+        loginError.style.display = "block";
+    }
 
-            let accounts = JSON.parse(localStorage.getItem("nms_ai_accounts")) || [];
-
-            const existingAccount = accounts.find(account => account.email === email);
-
-            if (existingAccount) {
-                errorMessage.textContent = "An account with this email already exists.";
-                errorMessage.style.display = "block";
-                return;
-            }
-
-            const newAccount = {
-                id: "user_" + Date.now(),
-                name: name,
-                email: email,
-                password: password
-            };
-
-            accounts.push(newAccount);
-
-            localStorage.setItem(
-                "nms_ai_accounts",
-                JSON.stringify(accounts)
-            );
-
-            localStorage.setItem(
-                "nms_ai_logged_in_user",
-                JSON.stringify({
-                    id: newAccount.id,
-                    name: newAccount.name,
-                    email: newAccount.email
-                })
-            );
-
-            showAuthLoading("Creating account...");
-
-            setTimeout(() => {
-                window.location.href = "chat.html";
-            }, 1200);
         });
+
     </script>
 
 </body>
