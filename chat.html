@@ -1434,42 +1434,43 @@
       try {
 
         // ========================================================
-        // IMPORTANT:
-        // Your backend runs on PORT 3000.
+        // NMS AI BACKEND
+        // Keep server.js running on your PC at PORT 3000.
         // ========================================================
 
-        const response =
-          await fetch("http://localhost:3000/chat", {
-              method: "POST",
+        const BACKEND_URL = "http://127.0.0.1:3000";
 
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body: JSON.stringify({
-                message: text
-              })
-            }
-          );
-
+        const response = await fetch(
+          `${BACKEND_URL}/chat`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              message: text
+            })
+          }
+        );
 
         if (!response.ok) {
+          let errorMessage = "Backend returned " + response.status;
 
-          throw new Error(
-            "Backend returned " +
-            response.status
-          );
+          try {
+            const errorData = await response.json();
+            if (errorData.error) {
+              errorMessage += ": " + errorData.error;
+            }
+          } catch (_) {
+            // Ignore non-JSON error responses.
+          }
 
+          throw new Error(errorMessage);
         }
 
-
-        const data =
-          await response.json();
-
+        const data = await response.json();
 
         thinking.remove();
-
 
         addMessage(
           data.reply ??
@@ -1477,16 +1478,14 @@
           "ai"
         );
 
-
         saveCurrentChat();
-
 
       } catch (error) {
 
         thinking.remove();
 
         addMessage(
-          "⚠️ I couldn't connect to the NMS AI backend.",
+          "⚠️ NMS AI couldn't reach the backend. Make sure server.js is running on http://127.0.0.1:3000.",
           "ai"
         );
 
